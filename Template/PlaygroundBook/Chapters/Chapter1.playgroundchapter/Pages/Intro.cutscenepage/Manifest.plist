@@ -3,11 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>Name</key>
-	<string>ChapterOneName</string>
-	<key>Pages</key>
-	<array>
-		<string>Intro.cutscenepage</string>
-		<string>PlaygroundPage.playgroundpage</string>
-	</array>
+	<string>ChapterOnePageOneName</string>
 </dict>
 </plist>
