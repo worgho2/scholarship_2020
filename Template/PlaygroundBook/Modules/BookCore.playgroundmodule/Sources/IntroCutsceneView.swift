@@ -80,14 +80,12 @@ public struct MapRuleView: View {
                         }
                         .scaledToFit()
                         .position(x: geometry.size.width/2, y: geometry.size.height/2)
-                        
-                        Rectangle()
-                            .path(in: CGRect(x: geometry.size.width/2  + geometry.size.height * 0.3,
-                                             y: geometry.size.height/2 + geometry.size.height * 0.3,
-                                             width: geometry.size.height * 0.2,
-                                             height: geometry.size.height * 0.2
-                            ))
-                            .fill(Color.blue)
+                                                                   
+                        Image(self.mapType == .correct ? "check" : "close")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: geometry.size.height * 0.2, height: geometry.size.height * 0.2)
+                            .position(x: geometry.size.width/2 + geometry.size.height * 0.35 , y: geometry.size.height/2 + geometry.size.height * 0.35)
                     }
                 }
             }
@@ -182,13 +180,11 @@ public struct MapCommandView: View {
                         .scaledToFit()
                         .position(x: geometry.size.width/2, y: geometry.size.height/2)
                         
-                        Rectangle()
-                            .path(in: CGRect(x: geometry.size.width/2 + geometry.size.height * 0.15,
-                                             y: geometry.size.height/2 - geometry.size.height * 0.2 - geometry.size.height * 0.15,
-                                             width: geometry.size.height * 0.2,
-                                             height: geometry.size.height * 0.2
-                            ))
-                            .fill(Color.blue)
+                        Image(self.commandType == .tap ? "tap" : "longpress")
+                               .resizable()
+                               .scaledToFit()
+                               .frame(width: geometry.size.height * 0.2, height: geometry.size.height * 0.2)
+                               .position(x: geometry.size.width/2 + geometry.size.height * 0.25 , y: geometry.size.height/2 - geometry.size.height * 0.2)
                     }
                 }
             }
@@ -308,7 +304,7 @@ public struct MapView: View {
                         .position(x: geometry.size.width/2, y: geometry.size.height/2)
  
                     }
-                }.layoutPriority(1).padding()
+                }.layoutPriority(1).padding().animation(.interactiveSpring())
                 
                 Button(action: {
                     if self.isMapCorrect {
@@ -329,7 +325,7 @@ public struct MapView: View {
                             RoundedRectangle(cornerRadius: 40)
                                 .stroke(Color.primary, lineWidth: 5)
                         )
-                    
+                        .animation(.interactiveSpring())
                 })
                     
             }
@@ -361,8 +357,6 @@ public struct ContentView: View {
     
     public var body: some View {
         ZStack {
-            Color.primary.colorInvert()
-            
             VStack(spacing: 25) {
                 
                 Spacer(minLength: 10)
